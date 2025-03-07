@@ -1,4 +1,4 @@
-type CategoryType = 'one' | 'two' | 'three' | 'four'
+export type CategoryType = 'one' | 'two' | 'three' | 'four'
 
 type StatusType = 'progress' | 'completed'
 
