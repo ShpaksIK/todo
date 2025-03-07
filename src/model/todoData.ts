@@ -1,31 +1,36 @@
-import { ICategory } from "../interface"
+import { ITodoCategories, ITodos } from "../types/types"
 
 
-export const getTodos = async () => {
-    const todosOne: ICategory = {
-        category: 'one',
-        todos: [
-            {id: 1, title: 'Test1', description: 'Test todo', category: 'one'}
-        ]
-    }
-    const todosTwo: ICategory = {
-        category: 'two',
-        todos: [
-            {id: 1, title: 'Test1', description: 'Test todo', category: 'two'}
-        ]
-    }
-    const todosThree: ICategory = {
-        category: 'three',
-        todos: [
-            {id: 1, title: 'Test1', description: 'Test todo', category: 'three'}
-        ]
-    }
-    const todosFour: ICategory = {
-        category: 'four',
-        todos: [
-            {id: 1, title: 'Test1', description: 'Test todo', category: 'four'}
-        ]
-    }
+export const getTodos = (): ITodoCategories => {
+    const todosOne: ITodos = [
+        {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'one'},
+        {id: 2, title: 'Test2', description: 'Test todo', status: 'completed', category: 'one'},
+        {id: 3, title: 'Test3', description: 'Test todo', status: 'progress', category: 'one'},
+    ]
+    const todosTwo: ITodos = [
+        {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'two'}
+    ]
+    const todosThree: ITodos = [
+        {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'three'}
+    ]
+    const todosFour: ITodos = [
+        {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'four'}
+    ]
 
-    return [todosOne, todosTwo, todosThree, todosFour]
+    const responseData: ITodoCategories = {
+        one: todosOne,
+        two: todosTwo,
+        three: todosThree,
+        four: todosFour,
+    }
+    
+    return responseData
+}
+
+export const deleteTodo = (): void => {
+    
+}
+
+export const deleteAllTodos = (): void => {
+
 }

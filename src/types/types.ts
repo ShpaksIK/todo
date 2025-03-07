@@ -1,22 +1,20 @@
 type CategoryType = 'one' | 'two' | 'three' | 'four'
 
+type StatusType = 'progress' | 'completed'
+
 export interface ITodo {
   id: number;
   title: string;
   description: string;
+  status: StatusType;
   category: CategoryType;
 }
 
-export interface ITodos {
-  todos: Array<ITodo>;
-}
-
-export interface ICategory {
-  category: CategoryType;
-  todos: Array<ITodo>;
-}
+export type ITodos = Array<ITodo> | null
 
 export interface ITodoCategories {
-  category: CategoryType;
-  todos: Array<ITodo>;
+  one?: ITodos;
+  two?: ITodos;
+  three?: ITodos;
+  four?: ITodos;
 }

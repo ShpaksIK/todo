@@ -1,22 +1,97 @@
 .categoryOne {
-    max-width: calc((100vw - 300px) / 2);
-    width: calc((100vw - 300px) / 2);
+    max-width: calc((100vw - 400px) / 2);
+    width: calc((100vw - 400px) / 2);
     border-radius: 10px;
-    border: 2px solid #ff6363;
+    box-shadow: 0 0 0 2px #ffaaaa,
+                0 0 0 5px #ff6363,
+                0 0 0 7px #ffaaaa;
     padding: 10px;
+    margin: 7px;
 
     b {
-        
+        font-weight: 500;
+        font-size: 1.5rem;
     }
+}
+
+.categoryOne_undefined {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.categoryOne_list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .categoryOne_do {
     padding: 10px;
     border-radius: 5px;
-    background-color: #eee;
+    background-color: #f7f7f7;
+    border: 1px solid #ffaaaa;
     
     b {
         font-size: 1.5rem;
         font-weight: 500;
     }
+}
+
+.categoryOne_do_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.categoryOne_do_title_info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.categoryOne_do_title_info_sector {
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.categoryOne_do_title_info_progress {
+    background-color: #ffe0e0;
+    border: 1px solid #ff6363;
+    color: #ff6363;
+}
+
+.categoryOne_do_title_info_completed {
+    background-color: #ebffe2;
+    border: 1px solid #047000;
+    color: #047000;
+}
+
+.categoryOne_completed {
+    opacity: 0.4;
+}
+
+.categoryOne_do_title_options {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.categoryOne_do_title_options_option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.categoryOne_do_title_options_option:hover {
+    transition: 0.1s;
+    background-color: #dadada;
 }
