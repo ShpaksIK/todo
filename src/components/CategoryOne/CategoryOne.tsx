@@ -1,10 +1,12 @@
 import React from 'react'
 import classNames from 'classnames'
+import { connect } from 'react-redux'
 
 import style from './categoryOne.module.scss'
 import { CategoryType, ITodo, ITodos } from '../../types/types'
 import deleteSVG from './../../assets/svg/delete.svg'
 import { changeTodoStatus, deleteCategory, deleteTodo } from '../../model/todoData'
+import { IState } from '../../redux/store'
 
 
 interface ICategoryOneProps {
@@ -21,7 +23,7 @@ const CategoryOne: React.FC<ICategoryOneProps> = ({ todos }) => {
   }
  
   return (
-    <div className={style.categoryOne}>
+    <article className={style.categoryOne}>
       <div className={style.categoryOne_title}>
         <b>Срочные и важные</b>
         {todos && (
@@ -62,9 +64,14 @@ const CategoryOne: React.FC<ICategoryOneProps> = ({ todos }) => {
           ))}
         </div>
       )}
-    </div>
+    </article>
   )
 }
 
+const mapStateToProps = (state: IState) => {
+    return {
+      todos: state.todo.todos.one
+    }
+}
 
-export default CategoryOne
+export default connect(mapStateToProps)(CategoryOne)

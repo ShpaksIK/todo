@@ -1,0 +1,81 @@
+.addTodo_block {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #b3b3b381;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addTodo {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.addTodo_title {
+    text-align: center;
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        color: gray;
+    }
+}
+
+.addTodo_form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.addTodo_form_input {
+    display: flex;
+    flex-direction: column;
+
+    p {
+        color: gray;
+        font-size: 15px;
+    }
+
+    input, select {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #fff;
+        outline: none;
+        border: 1px solid #000;
+    }
+}
+
+.addTodo_create {
+    background-color: #5959ff;
+    border-radius: 5px;
+    border: 1px solid #000;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+.addTodo_create:hover {
+    transition: 0.1s;
+    background-color: #3e3eff;
+}
+
+.addTodo_close {
+    height: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+        height: 100%;
+        cursor: pointer;
+    }
+}

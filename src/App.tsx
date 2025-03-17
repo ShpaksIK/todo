@@ -1,38 +1,30 @@
 import React, { useEffect, useState } from 'react'
 
 import style from './assets/styles/app.module.scss'
-import { getTodos } from './model/todoData'
+import { getTodos } from './redux/reducers/todoReducer'
 import Nav from './components/Nav/Nav'
 import CategoryOne from './components/CategoryOne/CategoryOne'
-import { ITodoCategories } from './types/types'
 import CategoryTwo from './components/CategoryTwo/CategoryTwo'
 import CategoryThree from './components/CategoryThree/CategoryThree'
 import CategoryFour from './components/CategoryFour/CategoryFour'
+import AddTodo from './components/AddTodo/AddTodo'
 
 
 const App: React.FC = () => {
-  const [todoCategories, setTodoCategories] = useState<ITodoCategories | null>(null)
+  const [isOpenCreateTodoBlock, setIsOpenCreateTodoBlock] = useState<boolean>(false)
 
   useEffect(() => {
-    const fetchTodos = async () => {
-      try {
-        const response: ITodoCategories = await getTodos()
-        setTodoCategories(response)
-      } catch (error) {
-        console.error('Ошибка при загрузке задач:', error);
-      }
-    }
-    fetchTodos()
+    getTodos()
   }, [])
 
   return (
       <div className={style.app}>
-        <Nav />
+        {isOpenCreateTodoBlock && (
+          <AddTodo closeBlock={() => setIsOpenCreateTodoBlock(false)} />
+        )}
+        <Nav openCreateTodoBlock={() => setIsOpenCreateTodoBlock(true)} />
         <main>
-          <CategoryOne todos={todoCategories?.one} />
-          <CategoryTwo todos={todoCategories?.two} />
-          <CategoryThree todos={todoCategories?.three} />
-          <CategoryFour todos={todoCategories?.four} />
+          <CategoryOne />
         </main>
       </div>
   )

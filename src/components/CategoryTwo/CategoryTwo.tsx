@@ -10,7 +10,7 @@ interface ICategoryTwoProps {
 
 const CategoryTwo: React.FC<ICategoryTwoProps> = ({ todos }) => {
   return (
-    <div className={style.categoryOne}>
+    <article className={style.categoryOne}>
       <b>Срочные и важные</b>
       {!todos || todos.length === 0 ? (
         <p>Пока что нет срочных и важных дел</p>
@@ -22,7 +22,7 @@ const CategoryTwo: React.FC<ICategoryTwoProps> = ({ todos }) => {
           </div>
         ))
       )}
-    </div>
+    </article>
   )
 }
 
