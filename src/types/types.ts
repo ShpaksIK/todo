@@ -18,3 +18,5 @@ export interface ITodoCategories {
   three?: ITodos;
   four?: ITodos;
 }
+
+export type ITodoCategoriesType = ITodoCategories | null

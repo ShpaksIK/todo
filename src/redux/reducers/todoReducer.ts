@@ -1,14 +1,10 @@
-import { ITodoCategories, ITodos } from '../../types/types'
-import { getTodosAll } from '../../model/todoData'
+import { CategoryType, ITodo, ITodoCategories, ITodoCategoriesType } from '../../types/types'
 
 
-const SET_TODO_ONE = 'SET_TODO_ONE'
-const SET_TODO_TWO = 'SET_TODO_TWO'
-const SET_TODO_THREE = 'SET_TODO_THREE'
-const SET_TODO_FOUR = 'SET_TODO_FOUR'
+const SET_TODOS = 'SET_TODOS'
 
 export interface IDefaultState {
-    todos: ITodoCategories
+    todos: ITodoCategoriesType
 }
 
 let defaultState: IDefaultState = {
@@ -20,7 +16,7 @@ let defaultState: IDefaultState = {
     }
 }
 
-type TodoReducerConstantsType = typeof SET_TODO_ONE | typeof SET_TODO_TWO | typeof SET_TODO_THREE | typeof SET_TODO_FOUR
+type TodoReducerConstantsType = typeof SET_TODOS
 
 interface IActionReducer {
     type: TodoReducerConstantsType;
@@ -29,78 +25,55 @@ interface IActionReducer {
 
 const todoReducer = (state: IDefaultState = defaultState, action: IActionReducer) => {
     switch (action.type) {
-        case SET_TODO_ONE:
+        case SET_TODOS:
+            const todosOne = action.payload.one ? action.payload : state.todos?.one
+            const todosTwo = action.payload.two ? action.payload : state.todos?.two
+            const todosThree = action.payload.three ? action.payload : state.todos?.three
+            const todosFour = action.payload.four ? action.payload : state.todos?.four
             return {
                 ...state,
                 todos: {
-                    ...state.todos,
-                    one: action.payload
+                    todosOne,
+                    todosTwo,
+                    todosThree,
+                    todosFour
                 }
             }
-        case SET_TODO_TWO:
-            return {
-                ...state,
-                todos: {
-                    ...state.todos,
-                    two: action.payload
-                }
-            }
-        case SET_TODO_THREE:
-            return {
-                ...state,
-                todos: {
-                    ...state.todos,
-                    three: action.payload
-                }
-            }
-        case SET_TODO_FOUR:
-            return {
-                ...state,
-                todos: {
-                    ...state.todos,
-                    four: action.payload
-                }
-            }
-                
         default:
             return state
     }
 }
 
-export const setTodoOneAC = (todos: ITodos): IActionReducer => ({
-    type: SET_TODO_ONE,
-    payload: todos
-})
-
-export const setTodoTwoAC = (todos: ITodos): IActionReducer => ({
-    type: SET_TODO_TWO,
-    payload: todos
-})
-
-export const setTodoThreeAC = (todos: ITodos): IActionReducer => ({
-    type: SET_TODO_THREE,
-    payload: todos
-})
-
-export const setTodoFourAC = (todos: ITodos): IActionReducer => ({
-    type: SET_TODO_FOUR,
+export const setTodosAC = (todos: ITodoCategories): IActionReducer => ({
+    type: SET_TODOS,
     payload: todos
 })
 
 export const getTodos = () => async (dispatch: any) => {
-    const todos: ITodoCategories = getTodosAll()
-    if (todos.one) {
-        dispatch(setTodoOneAC(todos.one))
+    const isTodos = localStorage.getItem('todos')
+    if (isTodos) {
+        const todos = JSON.parse(isTodos)
+        dispatch(setTodosAC(todos))
+    } else {
+        const emptyTodos: ITodoCategoriesType = {
+            one: [
+                {id: 1, title: 'Test1', description: 'Test todoggwrthwertjhrejjrjyerje', status: 'progress', category: 'one'}
+            ]
+        }
+        localStorage.setItem('todos', JSON.stringify(emptyTodos))
     }
-    if (todos.two) {
-        dispatch(setTodoTwoAC(todos.two))
-    }
-    if (todos.three) {
-        dispatch(setTodoThreeAC(todos.three))
-    }
-    if (todos.four) {
-        dispatch(setTodoFourAC(todos.four))
-    }
+}
+
+export const deleteTodo = (todoId: number, category: CategoryType) => async (dispatch: any, getState: any) => {
+    const filteredTodos = getState().todo.todos[category]?.filter((todo: ITodo) => todo.id !== todoId)
+    localStorage.setItem('todos', JSON.stringify({
+        ...getState().todo.todos,
+        filteredTodos
+    }))
+    dispatch(setTodosAC({
+        ...getState().todo.todos,
+        filteredTodos
+    }))
 }
 
 

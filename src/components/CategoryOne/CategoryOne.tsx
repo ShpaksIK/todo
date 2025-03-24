@@ -7,15 +7,20 @@ import { CategoryType, ITodo, ITodos } from '../../types/types'
 import deleteSVG from './../../assets/svg/delete.svg'
 import { changeTodoStatus, deleteCategory, deleteTodo } from '../../model/todoData'
 import { IState } from '../../redux/store'
+import { getTodos } from '../../redux/reducers/todoReducer'
 
 
 interface ICategoryOneProps {
   todos: ITodos | undefined;
+  getTodos: () => any;
 }
 
-const CategoryOne: React.FC<ICategoryOneProps> = ({ todos }) => {
+const CategoryOne: React.FC<ICategoryOneProps> = ({ ...props }) => {
+  const todos = props.todos
+  
   const onDeleteTodo = (todoId: number, category: CategoryType): void => {
     deleteTodo(todoId, category)
+    props.getTodos()
   }
 
   const onChangeTodoStatus = (todoId: number, category: CategoryType): void => {
@@ -70,8 +75,8 @@ const CategoryOne: React.FC<ICategoryOneProps> = ({ todos }) => {
 
 const mapStateToProps = (state: IState) => {
     return {
-      todos: state.todo.todos.one
+      todos: state.todo.todos?.one
     }
 }
 
-export default connect(mapStateToProps)(CategoryOne)
+export default connect(mapStateToProps, {getTodos})(CategoryOne)

@@ -12,4 +12,4 @@ const rootReducer = combineReducers({
     todo: todoReducer
 })
 
-export default legacy_createStore(rootReducer, applyMiddleware(thunk))
+export default legacy_createStore<any, any>(rootReducer, applyMiddleware(thunk))

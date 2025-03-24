@@ -1,25 +1,32 @@
-import { CategoryType, ITodoCategories, ITodo } from "../types/types"
+import { CategoryType, ITodoCategoriesType, ITodo } from '../types/types'
 
 
-export const todos: ITodoCategories = {
-    one: [
-        {id: 1, title: 'Test1', description: 'Test todoggwrthwertjhrejjrjyerje', status: 'progress', category: 'one'},
-        {id: 2, title: 'Test2', description: 'Test todo', status: 'completed', category: 'one'},
-        {id: 3, title: 'Test3', description: 'Test todo', status: 'progress', category: 'one'},
-    ],
-    two: [
-        {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'two'}
-    ],
-    three: [
-        {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'three'}
-    ],
-    four: [
-        {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'four'}
-    ]
-}
+// export const todos: ITodoCategoriesType = {
+//     one: [
+//         {id: 1, title: 'Test1', description: 'Test todoggwrthwertjhrejjrjyerje', status: 'progress', category: 'one'},
+//         {id: 2, title: 'Test2', description: 'Test todo', status: 'completed', category: 'one'},
+//         {id: 3, title: 'Test3', description: 'Test todo', status: 'progress', category: 'one'},
+//     ],
+//     two: [
+//         {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'two'}
+//     ],
+//     three: [
+//         {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'three'}
+//     ],
+//     four: [
+//         {id: 1, title: 'Test1', description: 'Test todo', status: 'progress', category: 'four'}
+//     ]
+// }
 
-export const getTodosAll = (): ITodoCategories => {
-    return todos
+export const getTodosAll = (): ITodoCategoriesType => {
+    const todos = localStorage.getItem('todos')
+    if (todos) {
+        return JSON.parse(todos)
+    } else {
+        const emptyTodos: ITodoCategoriesType = {}
+        localStorage.setItem('todos', JSON.stringify(emptyTodos))
+        return emptyTodos
+    }
 }
 
 export const deleteTodo = (todoId: number, category: CategoryType): void => {
