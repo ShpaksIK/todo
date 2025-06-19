@@ -1,35 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { Route, Routes } from 'react-router';
+import Home from './pages/Home';
 
-import style from './assets/styles/app.module.scss'
-import { getTodos } from './redux/reducers/todoReducer'
-import Nav from './components/Nav/Nav'
-import AddTodo from './components/AddTodo/AddTodo'
-import CategoryOne from './components/CategoryOne/CategoryOne'
-import CategoryTwo from './components/CategoryTwo/CategoryTwo'
-import CategoryThree from './components/CategoryThree/CategoryThree'
-import CategoryFour from './components/CategoryFour/CategoryFour'
-
-
-const App: React.FC = (props: any) => {
-  const [isOpenCreateTodoBlock, setIsOpenCreateTodoBlock] = useState<boolean>(false)
-
-  useEffect(() => {
-    props.getTodos()
-  }, [])
-
+const App: React.FC = () => {
   return (
-      <div className={style.app}>
-        {isOpenCreateTodoBlock && (
-          <AddTodo closeBlock={() => setIsOpenCreateTodoBlock(false)} />
-        )}
-        <Nav openCreateTodoBlock={() => setIsOpenCreateTodoBlock(true)} />
-        <main>
-          <CategoryOne />
-        </main>
-      </div>
-  )
-}
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </>
+  );
+};
 
-
-export default connect(null, {getTodos})(App)
+export default App;

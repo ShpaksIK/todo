@@ -1,0 +1,39 @@
+:root {
+  --color-background: #f0f0f0;
+  --color-text: #000;
+  --color-text-primary: #bcbcbc;
+
+  --color-palette-1: #5959ff;
+  --color-palette-1-hover: #4a4afd;
+  --color-palette-2: #f1973d;
+  --color-palette-2-hover: #d47d26;
+  --color-palette-3: #fa4e4e;
+
+  --color-border-1: #fa4e4e;
+  --color-border-2: #f1973d;
+  --color-border-3: #d2c400;
+  --color-border-4: #008000;
+}
+
+body {
+  overflow-y: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 200px;
+    height: 3px;
+    background-color: var(--color-palette-2);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

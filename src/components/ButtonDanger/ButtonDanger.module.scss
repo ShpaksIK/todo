@@ -1,0 +1,14 @@
+.buttonDanger {
+  background-color: rgba(255, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    background-color: rgba(255, 0, 0, 0.7);
+  }
+}

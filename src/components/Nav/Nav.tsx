@@ -1,26 +1,31 @@
-import React from 'react'
-import classNames from 'classnames'
+import React from 'react';
+import style from './Nav.module.scss';
+import { useDispatch } from 'react-redux';
+import { removeAll } from '../../redux/todoSlice';
 
-import style from './nav.module.scss'
-import logoIMG from './../../assets/images/logo.png'
-import { completeAllTodos, deleteAllTodos } from '../../model/todoData'
-
-
-interface INavProps {
-  openCreateTodoBlock: () => void;
+interface NavProps {
+  setIsMenuAddTodoOpen: (isOpen: boolean) => void;
 }
 
-const Nav: React.FC<INavProps> = ({ openCreateTodoBlock }) => {
+const Nav: React.FC<NavProps> = ({ setIsMenuAddTodoOpen }) => {
+  const dispatch = useDispatch();
+
   return (
-      <nav>
-        <img src={logoIMG} />
-        <b>To-Do List</b>
-        <div className={style.nav_link} onClick={openCreateTodoBlock}>Добавить</div>
-        <div className={style.nav_link} onClick={completeAllTodos}>Выполнить все</div>
-        <div className={classNames(style.nav_link, style.nav_link_danger)} onClick={deleteAllTodos}>Удалить все</div>
-      </nav>
-  )
-}
+    <nav className={style.nav}>
+      <div className={style.nav__logo}>
+        <h1 className="title">To-Do List</h1>
+        <p>Выполняйте задачи, чтобы стать лучше!</p>
+      </div>
+      <div className={style.nav__links}>
+        <button className={style.nav__link} onClick={() => setIsMenuAddTodoOpen(true)}>
+          Добавить задачу
+        </button>
+        <button className={style.nav__link} onClick={() => dispatch(removeAll())}>
+          Удалить все задачи
+        </button>
+      </div>
+    </nav>
+  );
+};
 
-
-export default Nav
+export default Nav;

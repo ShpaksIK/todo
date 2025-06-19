@@ -1,15 +1,11 @@
-import { applyMiddleware, legacy_createStore, combineReducers } from 'redux'
-import { thunk } from 'redux-thunk'
+import { configureStore } from '@reduxjs/toolkit';
+import todoReducer from './todoSlice';
 
-import todoReducer, { IDefaultState } from './reducers/todoReducer'
+export const store = configureStore({
+  reducer: {
+    todo: todoReducer,
+  },
+});
 
-
-export interface IState {
-    todo: IDefaultState
-}
-
-const rootReducer = combineReducers({
-    todo: todoReducer
-})
-
-export default legacy_createStore<any, any>(rootReducer, applyMiddleware(thunk))
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
