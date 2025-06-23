@@ -2,11 +2,15 @@
   --color-background: #f0f0f0;
   --color-text: #000;
   --color-text-primary: #bcbcbc;
+  --color-text-gray: #666;
+
+  --color-danger: #dc3545;
+  --color-danger-hover: #bd2130;
 
   --color-palette-1: #5959ff;
   --color-palette-1-hover: #4a4afd;
-  --color-palette-2: #f1973d;
-  --color-palette-2-hover: #d47d26;
+  --color-palette-2: #f3a456;
+  --color-palette-2-hover: #ee9a47;
   --color-palette-3: #fa4e4e;
 
   --color-border-1: #fa4e4e;
@@ -16,8 +20,9 @@
 }
 
 body {
-  overflow-y: hidden;
   font-family: 'Roboto', sans-serif;
+  background-color: var(--color-background);
+  overflow-x: hidden;
 }
 
 .title {

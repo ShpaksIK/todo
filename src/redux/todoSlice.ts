@@ -40,6 +40,15 @@ const todoSlice = createSlice({
       if (todo) todo.completed = !todo.completed;
       localStorage.setItem('todos', JSON.stringify(state.todos));
     },
+    changeTodo: (state, action: PayloadAction<Todo>) => {
+      const todo = state.todos.find((t) => t.id === action.payload.id);
+      if (todo) {
+        todo.title = action.payload.title;
+        todo.description = action.payload.description;
+        todo.category = action.payload.category;
+      }
+      localStorage.setItem('todos', JSON.stringify(state.todos));
+    },
     removeAll: (state) => {
       state.todos = [];
       localStorage.setItem('todos', JSON.stringify(state.todos));
@@ -51,6 +60,7 @@ const todoSlice = createSlice({
   },
 });
 
-export const { addTodo, removeTodo, toggleTodo, removeAll, removeByCategory } = todoSlice.actions;
+export const { addTodo, removeTodo, toggleTodo, removeAll, removeByCategory, changeTodo } =
+  todoSlice.actions;
 
 export default todoSlice.reducer;

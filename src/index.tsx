@@ -1,6 +1,5 @@
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
-import { BrowserRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import { store } from './redux/store.ts';
 
@@ -8,9 +7,7 @@ import './assets/styles/normalize.css';
 import './assets/styles/init.scss';
 
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
 );

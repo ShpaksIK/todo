@@ -1,54 +1,32 @@
-# React + TypeScript + Vite
+# To-Do List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Главной целью «To-Do List» является учёт списка дел (задач) пользователя. Это одностраничный сайт, с помощью которого пользователь может добавлять, изменять и удалять предстоящие задачи.
 
-Currently, two official plugins are available:
+## Функции
+Сайт выполняет следующие функции:
+- Хранение задач: хранение в локальном хранилище браузера (localStorage).
+- Добавление задачи: установка заголовка, описания и категории.
+- Удаление определенной задачи.
+- Удаление всех задач определенной категории.
+- Удаление всех задач.
+- Отображение задач: отображение списка задач на главной странице по категориям.
+- Установка статуса задачи: «Не выполнено», «Выполнено».
+- Фильтрация задач: фильтрация по статусам «Не выполнено», «Выполнено», «Все».
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Категории
+Всего существует 4 категории:
+1. «Срочно и важно»: отображаются на первом месте, в самом начале (сверху слева) списка. Помечаются красным цветом.
+2. «Срочно и не важно»: отображаются на втором месте, после первой категории (сверху справа). Помечаются оранжевым цветом.
+3. «Важно и не срочно»: отображаются на третьем месте, после второй категории (снизу слева). Помечаются желтым цветом.
+4. «Не срочно и не важно»: отображаются на четвертом (последнем) месте (снизу справа). Помечаются зеленым цветом.
 
-## Expanding the ESLint configuration
+По умолчанию события будут записываться в категорию 1 - «Срочно и важно».
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Технологии
+В разработке использовались следующие технологии:
+- Языки: TypeScript, SCSS
+- Фреймворк: React
+- Сборщик: Vite
+- Стилизация: SCSS (Sass)
+- Управление состоянием: Redux Toolkit, React-Redux
+- Валидация форм: Formik, Yup

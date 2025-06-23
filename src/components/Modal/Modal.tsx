@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Modal.module.scss';
+import closeIcon from '../../assets/svg/close.svg';
 
 interface ModalProps {
   children: React.ReactNode;
@@ -14,7 +15,7 @@ const Modal: React.FC<ModalProps> = ({ children, setIsOpen, isOpen }) => {
     <div className={style.modal} onClick={() => setIsOpen(false)}>
       <div className={style.modal__content} onClick={(e) => e.stopPropagation()}>
         <button className={style.modal__content__close} onClick={() => setIsOpen(false)}>
-          X
+          <img src={closeIcon} alt="Закрыть" />
         </button>
         {children}
       </div>

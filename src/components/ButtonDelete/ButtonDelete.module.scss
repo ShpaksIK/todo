@@ -1,0 +1,27 @@
+.buttonDelete {
+  background-color: var(--color-danger);
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: none;
+  min-height: 30px;
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: var(--color-danger-hover);
+  }
+
+  img {
+    width: 15px;
+    height: 15px;
+  }
+}
